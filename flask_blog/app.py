@@ -15,7 +15,6 @@ def get_post(post_id):
                         (post_id, )).fetchone()
     conn.close()
     if post is None:
-        print('аборт грех')
         abort(404)
     return post
 
@@ -28,7 +27,6 @@ def index():
 
 @app.route('/<int:post_id>')
 def post(post_id):
-    print(123213)
     post = get_post(post_id)
     return render_template('post.html', post=post)
 

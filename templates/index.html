@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+    <title>Hello from Flask</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar navbar-dark bg-primary rounded">
+            <h1 style="margin-left: 200px;">Iris flower</h1>
+            <hr>
+        </nav>
+    </header>
+    <div class="container-fluid" style="width: 800px; height: 100%; background-color: #e3f2fd; padding-bottom: 15px;">
+        <div class="row">
+            <div class="col-lg-6">
+                <div style="margin-left: 40px; margin-top: 20px; padding: 10px" class="border border-primary rounded">
+                    <form method="POST">
+                        To define the iris type, please enter the parameters:
+                        <br>
+                        <br>
+                        <div class="form-group">
+                          <label>Sepal Length</label>
+                          <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Sepal Length" name="sepallength", value = {{(range(44, 79) | random)/10}}>
+                          <small id="emailHelp" class="form-text text-muted">Usualy from 4.4 to 7.9</small>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Sepal Width</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Sepal Width" name="sepalwidth", value = {{(range(20, 44) | random)/10}}>
+                            <small class="form-text text-muted">Usualy from 2.0 to 4.4</small>
+                          </div>
+                    
+                          <div class="form-group">
+                            <label>Petal Length</label>
+                            <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Petal Length" name="petallength", value = {{(range(10, 60) | random)/10}}>
+                            <small class="form-text text-muted">Usualy from 1.0 to 6.0</small>
+                          </div>
+                    
+                          <div class="form-group">
+                            <label>Petal Width</label>
+                            <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Petal Width" name="petalwidth", value = {{(range(1, 25) | random)/10}}>
+                            <small class="form-text text-muted">Usualy from 0.1 to 2.5</small>
+                          </div>
+                    
+                    
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    </div>
+            </div>
+            <div class="col-lg-6" style="margin-top:20px;">
+                {% if name %}
+  <h3>And this ...</h3>
+  <br>
+  <p style="color:blueviolet">{{name}}!</p>
+  <br>
+  <img  src="/static/img/{{ path }}" alt="qwe" style="width: 300px; height: 250px;">
+  <br>
+  <h3>Parametrs</h3>
+  <p>Sepal Length: {{param[0]}}</p>
+  <p>Sepal Width: {{param[1]}}</p>
+  <p>Petal Length: {{param[2]}}</p>
+  <p>Petal Width: {{param[3]}}</p>
+{% else %}
+  <div class="text-center" style="width: 100%; height: 100%; display: flex-block; vertical-align: middle;"><p style="margin: auto; margin-top:50%">Here will be the result of the prediction!</p></div>
+{% endif %}
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
