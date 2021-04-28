@@ -22,8 +22,7 @@ iris={
 }
 
 @app.route('/', methods=('GET', 'POST'))
-def predictig():
-
+def predicting():
     name = None
     if request.method == 'POST':
         sl = float(request.form.get('sepallength'))

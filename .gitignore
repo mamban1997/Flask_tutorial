@@ -1,2 +1,4 @@
 my_env/
 __pycache__/
+flask_blog/
+flask_request_example/
