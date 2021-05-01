@@ -69,6 +69,35 @@
 {% endif %}
             </div>
         </div>
+        <br>
+        <p>     Last 3 predicted:</p>
+        <table class="table" style="margin-bottom: -15px;">
+          <thead>
+            <tr>
+              <th scope="col">date</th>
+              <th scope="col">Sepal length</th>
+              <th scope="col">Sepal width</th>
+              <th scope="col">Petal length</th>
+              <th scope="col">Petal width</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+        {% for iris in last_iris %}
+            <tr>
+              <th scope="row">{{  iris['created'] }}</th>
+              <td>{{  iris['sepal_length'] }}</td>
+              <td>{{  iris['sepal_width'] }}</td>
+              <td>{{  iris['petal_length'] }}</td>
+              <td>{{  iris['petal_width'] }}</td>
+              <td>{{  iris['type_iris'] }}</td>
+            </tr>
+            {% endfor %}  
+          </tbody>
+        </table>
+        
+        <br>
+  
     </div>
 
 
