@@ -15,7 +15,7 @@ with open('./model.pkl', 'rb') as model_pkl:
     knn = pickle.load(model_pkl)
     
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = 'secret key'
 
 iris={
     0:['Setosa', 'irissetosa1.jpg'],
@@ -41,26 +41,27 @@ def predicting():
     name = None
     last_iris = get_last_iris()
     if request.method == 'POST':
-        sl = float(request.form.get('sepallength'))
-        sw = float(request.form.get('sepalwidth'))
-        pl = float(request.form.get('petallength'))
-        pw = float(request.form.get('petalwidth'))
+        try:
+            sl = float(request.form.get('sepallength'))
+            sw = float(request.form.get('sepalwidth'))
+            pl = float(request.form.get('petallength'))
+            pw = float(request.form.get('petalwidth'))
+            param =[sl, sw, pl, pw]
+            new_record = np.array([[sl, sw, pl, pw]])
+            predict_result = knn.predict(new_record)
+            name = iris[predict_result[0]][0]
+            path = iris[predict_result[0]][1]
 
-
-        param =[sl, sw, pl, pw]
-        new_record = np.array([[sl, sw, pl, pw]])
-        predict_result = knn.predict(new_record)
-        name = iris[predict_result[0]][0]
-        path = iris[predict_result[0]][1]
-
-        conn = get_db_connection()
-        conn.execute("INSERT INTO iris_db (sepal_length, sepal_width,petal_length,petal_width,type_iris) VALUES (?, ?, ?, ?, ?)",
-            (sl, sw, pl, pw, name))
-        conn.commit()
-        conn.close()
-
-
-        return render_template('index.html', name=name, path = path, param = param, last_iris = last_iris)
+            conn = get_db_connection()
+            conn.execute("INSERT INTO iris_db (sepal_length, sepal_width,petal_length,petal_width,type_iris) VALUES (?, ?, ?, ?, ?)",
+                (sl, sw, pl, pw, name))
+            conn.commit()
+            conn.close()
+            return render_template('index.html', name=name, path = path, param = param, last_iris = last_iris)
+        except:
+            flash('Enter all parameters!')
+            return render_template('index.html', name=name, last_iris=last_iris)
+        
     return render_template('index.html', name=name, last_iris=last_iris)
 
 if __name__ == '__main__':
