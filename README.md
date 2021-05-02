@@ -34,3 +34,11 @@ $heroku container:release web --app <your_app_name> #(iris-classifier555)
 Рабочая ссылка:
 
 https://iris-classifier555.herokuapp.com/
+
+
+### Ссылки
+https://atrium.ai/resources/build-and-deploy-a-docker-containerized-python-machine-learning-model-on-heroku/
+
+https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
+
+https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-ru
