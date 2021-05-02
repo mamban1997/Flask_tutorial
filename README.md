@@ -41,4 +41,4 @@ https://atrium.ai/resources/build-and-deploy-a-docker-containerized-python-machi
 
 https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 
-https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-ru
+https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask
